@@ -1,22 +1,33 @@
-function checkDigitsInName(name) {
+function calculateFinalScore(obj) {
 
-   if (typeof name !== 'string') {
-        return 'Invalid Input';
-    }
-    
-    for (let num = 0; num <= 9; num++) {
+  if (typeof obj !== 'object') {
+    return "Invalid Input"
+  }
 
-        let convert = num.toString();
+  const name = obj.name;
+  const testScore = obj.testScore;
+  const schoolGrade = obj.schoolGrade;
+  const isFFamily = obj.isFFamily;
 
-       if (name.includes(convert)) {
-           return true;
-        }
-    }
-  return false;
+  if (typeof name !== 'string' || typeof testScore !== 'number' ||
+    typeof schoolGrade!=='number'||typeof isFFamily!=='boolean'
+  ) {
+    return "Invalid Input"
+  }
+
+  let finalScore = testScore + schoolGrade;
+  if (isFFamily === true) {
+    finalScore = finalScore + 20;
+  }
+
+  if (finalScore >= 80) {
+    return "true"
+  } else {
+    return "false"
+  }
+  
 }
 
-let output = checkDigitsInName(["Raj"]);
-console.log(output);
-
-
-
+const output = { name: "Rajib", testScore: 45,  schoolGrade: 25, isFFamily : true  } ;
+const result = calculateFinalScore(output);
+console.log(result);
