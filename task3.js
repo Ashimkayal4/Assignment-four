@@ -21,9 +21,9 @@ function calculateFinalScore(obj) {
   }
 
   if (finalScore >= 80) {
-    return "true"
+    return true;
   } else {
-    return "false"
+    return false;
   }
   
 }

@@ -47,9 +47,9 @@ function checkDigitsInName(name) {
 function calculateFinalScore(obj) {
 
   if (typeof obj !== 'object') {
-     return "Invalid Input"
-    }
-    
+    return "Invalid Input"
+  }
+
   const name = obj.name;
   const testScore = obj.testScore;
   const schoolGrade = obj.schoolGrade;
@@ -58,21 +58,41 @@ function calculateFinalScore(obj) {
   if (typeof name !== 'string' || typeof testScore !== 'number' ||
     typeof schoolGrade!=='number'||typeof isFFamily!=='boolean'
   ) {
-     return "Invalid Input"
+    return "Invalid Input"
   }
 
   let finalScore = testScore + schoolGrade;
-    
   if (isFFamily === true) {
     finalScore = finalScore + 20;
   }
 
   if (finalScore >= 80) {
-   return "true"
+    return true;
   } else {
-   return "false"
+    return false;
   }
   
+}
+
+
+
+function  waitingTime(waitingTimes  , serialNumber) {
+    if (Array.isArray(waitingTimes) === false || typeof serialNumber !== 'number') {
+      return "Invalid Input"
+    }
+
+    sum = 0;
+    for (let i = 0; i < waitingTimes.length; i++){
+        sum = sum + waitingTimes[i]; 
+    }
+
+    let divided = sum / waitingTimes.length;
+    let round = Math.round(divided);
+    let serial = serialNumber - 1;
+    let finalSerial = serial - waitingTimes.length;
+    let finalSum = round * finalSerial;
+
+    return finalSum;
 }
 
 
